@@ -13,24 +13,31 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
     <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
+<!doctype html>
+
+  <script>
+    (function (clientId) {
+      var accessTokenIndex = window.location.hash.indexOf('access_token='),
+          accessToken      = ~accessTokenIndex && window.location.hash.substr(accessTokenIndex + 13);
+      if (accessToken) {
+        // Window opener needs to have a function that can receive the access token update
+        window.opener.accessToken(accessToken);
+        window.close();
+      } else {
+        // Redirect to StockTwits for authentication
+        window.location = 'https://api.stocktwits.com/api/2/oauth/authorize?client_id=' + clientId + '&response_type=token&redirect_uri=' + window.location.href + '&scope=read,watch_lists,publish_messages,publish_watch_lists,follow_users,follow_stocks';
+      }
+    })('1b7d3f7654fde607');
+  </script>
+
     <div id="root"></div>
 
   </body>
