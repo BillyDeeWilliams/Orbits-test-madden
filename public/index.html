@@ -9,26 +9,22 @@
 
     <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+      name="Orbis Systems, Inc Technical challenge StockTwits Stock Watcher"
+      content="Web site created using create-react-app, Orbis Systems, Inc Technical challenge StockTwits Stock Watcher."
     />
     <link rel="apple-touch-icon" href="logo192.png" />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <title>React App</title>
+    <title>StockTwits Stock Watcher</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-
-<!doctype html>
-
   <script>
     (function (clientId) {
       var accessTokenIndex = window.location.hash.indexOf('access_token='),
           accessToken      = ~accessTokenIndex && window.location.hash.substr(accessTokenIndex + 13);
       if (accessToken) {
-        // Window opener needs to have a function that can receive the access token update
         window.opener.accessToken(accessToken);
         window.close();
       } else {
